@@ -1,0 +1,42 @@
+<%
+  common_params = {
+    client: @client,
+    response_type: @response_type,
+    redirect_uri: @redirect_uri,
+    scopes: @scopes,
+    state: params[:state],
+    nonce: params[:nonce],
+    _request_: @_request_,
+    request_uri: @request_uri
+  }
+%>
+
+<article>
+  <h2><%= 'authorizations.new.title'.t(client: @client.name) %></h2>
+  <p><%= 'authorizations.new.description'.t(redirect_uri: @redirect_uri) %></p>
+  <dl>
+    <dt><%= 'authorization.scope'.t %></dt>
+    <% @scopes.each do |scope| %>
+      <dd>
+        <%= scope.name %>
+        <%= if @grants.detect{|g| g.scope == scope } then '(existing)' end %>
+      </dd>
+    <% end %>
+    <% if @request_object %>
+      <dt><%= 'authorization.request_object'.t %></dt>
+      <dd>
+        <pre><%= JSON.pretty_generate @request_object.as_json.as_json %></pre>
+      </dd>
+    <% end %>
+  </dl>
+  <nav>
+    <ul>
+      <li>
+        <%= render 'form', common_params.merge(action: :approve) %>
+      </li>
+      <li>
+        <%= render 'form', common_params.merge(action: :deny) %>
+      </li>
+    </ul>
+  </nav>
+</article>

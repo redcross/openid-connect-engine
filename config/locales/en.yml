@@ -1,0 +1,42 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  # protocol
+  endpoint:
+    help: Protocol Endpoints
+    authorization: Authorization Endpoint
+    token: Token Endpoint
+    userinfo: UserInfo Endpoint
+  # per model
+  client:
+    identifier: Client ID
+    secret: Client Secret
+    credentials: Credentials
+  authorization:
+    scope: Requested Scopes
+  # per controller
+  site:
+    title: Nov's OP
+    description: Connect Now!
+  top:
+    title: Let me try to work with your RP :)
+    description: You can use this app as a sample OP for your RP or sample code for your OP.
+  dashboard:
+    title: Registered Clients
+    help:
+      title: Endpoint Info
+  clients:
+    new:
+      title: Register New Client
+  authorizations:
+    new:
+      title: Authorize %{client} ?
+      description: After approved, you will be redirected to %{redirect_uri}
+  connect:
+    fakes:
+      new:
+        title: Create Fake Account
+  # others
+  help:
+    title: Help
