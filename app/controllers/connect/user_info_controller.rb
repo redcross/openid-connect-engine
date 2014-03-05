@@ -6,9 +6,8 @@ module Connect
       acct = current_token.account
 
       keys = []
-      keys += [:name, :given_name, :family_name, :preferred_username] if current_token.accessible? 'profile'
-      keys += [:email] if current_token.accessible? 'email'
-
+      keys += [:name, :given_name, :family_name, :preferred_username] if current_token.accessible? Scope::PROFILE
+      keys += [:email] if current_token.accessible? Scope::EMAIL
 
 
       attrs = Config.account_attributes.call(acct, keys, current_token.scopes)
