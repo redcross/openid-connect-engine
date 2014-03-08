@@ -21,7 +21,7 @@ module Connect
               client: access_token.client,
               nonce: authorization.nonce,
               request_object: authorization.request_object
-            ).to_response_object.to_jwt IdToken.config[:private_key]
+            ).to_response_object(access_token: res.access_token).to_jwt IdToken.config[:private_key]
           end
         else
           req.unsupported_grant_type!

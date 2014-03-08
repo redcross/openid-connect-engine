@@ -45,7 +45,7 @@ module Connect
         token_endpoint_auth_methods_supported: ['client_secret_basic', 'client_secret_post'],
         claims_supported: ['sub', 'iss', 'name', 'email', 'address', 'phone_number']
       )
-      render json: config
+      render json: config.as_json.merge({end_session_endpoint: logout_url})
     end
   end
 end

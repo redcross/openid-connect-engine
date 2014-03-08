@@ -71,7 +71,6 @@ module Connect
 
       def config
         unless @config
-          config_path = File.join Connect::Engine.root, 'config/connect/id_token'
           @config = {issuer: Config.jwt_issuer}
           @config[:jwks_uri] = File.join(@config[:issuer], 'jwks.json')
           private_key = OpenSSL::PKey::RSA.new(
