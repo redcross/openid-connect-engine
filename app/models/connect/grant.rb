@@ -8,6 +8,8 @@ module Connect
 
     validates :client, :account, :scope, presence: true
 
+    include Expiring
+
     def self.for_client client
       where{client_id == client}
     end

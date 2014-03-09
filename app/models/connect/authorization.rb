@@ -2,7 +2,7 @@ module Connect
   class Authorization < ActiveRecord::Base
     belongs_to :account, class_name: Connect.account_class_name
     belongs_to :client
-    has_many :authorization_scopes, inverse_of: :authorization
+    has_many :authorization_scopes, inverse_of: :authorization, dependent: :destroy
     has_many :scopes, through: :authorization_scopes
     has_one :authorization_request_object
     has_one :request_object, through: :authorization_request_object
@@ -14,9 +14,7 @@ module Connect
     validates :code,       presence: true, uniqueness: true
     validates :expires_at, presence: true
 
-    scope :valid, lambda {
-      where { expires_at >= Time.now.utc }
-    }
+    include Expiring
 
     def expire!
       self.expires_at = Time.now

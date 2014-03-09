@@ -2,7 +2,7 @@ module Connect
   class IdToken < ActiveRecord::Base
     belongs_to :account, class_name: Connect.account_class_name
     belongs_to :client
-    has_one :id_token_request_object
+    has_one :id_token_request_object, dependent: :destroy
     has_one :request_object, through: :id_token_request_object
 
     before_validation :setup, on: :create
@@ -10,9 +10,7 @@ module Connect
     validates :account, presence: true
     validates :client,  presence: true
 
-    scope :valid, lambda {
-      where { expires_at >= Time.now.utc }
-    }
+    include Expiring
 
     def subject_identifier
       SubjectIdentifier.new(client, account).identifier

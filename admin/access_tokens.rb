@@ -1,5 +1,5 @@
 if defined?(ActiveAdmin)
-  ActiveAdmin.register Connect::Authorization do
+  ActiveAdmin.register Connect::AccessToken do
     menu parent: 'OpenID'
 
     index do

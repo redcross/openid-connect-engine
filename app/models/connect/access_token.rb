@@ -2,7 +2,7 @@ module Connect
   class AccessToken < ActiveRecord::Base
     belongs_to :account, class_name: Connect.account_class_name
     belongs_to :client
-    has_many :access_token_scopes
+    has_many :access_token_scopes, dependent: :destroy
     has_many :scopes, through: :access_token_scopes
     has_one :access_token_request_object
     has_one :request_object, through: :access_token_request_object
@@ -13,9 +13,7 @@ module Connect
     validates :token,      presence: true, uniqueness: true
     validates :expires_at, presence: true
 
-    scope :valid, lambda {
-      where { expires_at >= Time.now.utc }
-    }
+    include Expiring
 
     def to_bearer_token
       Rack::OAuth2::AccessToken::Bearer.new(
