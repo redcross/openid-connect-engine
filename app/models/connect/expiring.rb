@@ -4,7 +4,7 @@ module Connect
 
     module ClassMethods
       def valid
-        where{expires_at >= Time.now.to_utc}
+        where{expires_at >= Time.now}
       end
 
       def expired time
