@@ -1,7 +1,6 @@
 require 'connect/engine'
 require 'rack/oauth2'
 require 'openid_connect'
-require 'constant_cache'
 
 module Connect
   mattr_accessor :account_class, :session_class

@@ -23,5 +23,4 @@ Gem::Specification.new do |s|
   #s.add_dependency 'validate_url'
   #s.add_dependency 'validate_email'
   s.add_dependency 'html5_validators'
-  s.add_dependency 'constant_cache'
 end

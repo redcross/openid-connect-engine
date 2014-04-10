@@ -7,7 +7,14 @@ module Connect
 
     validates :name, presence: true, uniqueness: true
 
-    include ConstantCache
-    caches_constants
+    def self.const_missing name
+      record = self.find_by name: name.to_s.downcase
+      if record
+        const_set name, record
+        record
+      else
+        super
+      end
+    end
   end
 end
