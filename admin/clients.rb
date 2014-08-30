@@ -61,8 +61,7 @@ if defined?(ActiveAdmin)
 
     controller do
       def resource_params
-        return [] if request.get?
-        [params.require('connect_client').permit!]
+        [params.fetch(resource_request_name, {}).permit!]
       end
     end
   end

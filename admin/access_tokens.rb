@@ -11,7 +11,7 @@ if defined?(ActiveAdmin)
       end
       column :created_at
       column :expires_at
-      default_actions
+      actions
     end
 
     controller do
@@ -19,8 +19,7 @@ if defined?(ActiveAdmin)
         @authorizations ||= super.includes{[client, account, scopes]}
       end
       def resource_params
-        return [] if request.get?
-        [params.require('connect_authorization').permit!]
+        [params.fetch(resource_request_name, {}).permit!]
       end
     end
   end
