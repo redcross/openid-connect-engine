@@ -13,12 +13,12 @@ module Connect
         @current_token ||= request.env[Rack::OAuth2::Server::Resource::ACCESS_TOKEN]
       end
 
-      def current_scopes
+      def current_oauth_scopes
         token = current_access_token && token.scopes || []
       end
 
-      def has_scope? scope
-        current_scopes.detect{|s| s.name == scope}
+      def has_oauth_scope? scope
+        current_oauth_scopes.detect{|s| s.name == scope}
       end
 
     end
