@@ -14,7 +14,7 @@ module Connect
       end
 
       def current_oauth_scopes
-        token = current_access_token && token.scopes || []
+        token = (current_access_token && current_access_token.scopes) || []
       end
 
       def has_oauth_scope? scope
