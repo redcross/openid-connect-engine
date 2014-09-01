@@ -16,7 +16,7 @@ if defined?(ActiveAdmin)
       column :dynamic
       column :ppid
       column :expires_at
-      default_actions
+      actions
     end
 
     show do 

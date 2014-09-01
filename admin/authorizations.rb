@@ -11,7 +11,7 @@ if defined?(ActiveAdmin)
       end
       column :created_at
       column :expires_at
-      default_actions
+      actions
     end
 
     controller do
