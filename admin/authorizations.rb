@@ -2,6 +2,10 @@ if defined?(ActiveAdmin)
   ActiveAdmin.register Connect::Authorization do
     menu parent: 'OpenID'
 
+    filter :client
+    filter :scope
+    filter :created_at
+
     index do
       column :id
       column :client
