@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 6.0"
+  s.add_dependency "rails", ">= 5.0", "< 7.x"
   s.add_dependency 'openid_connect'
   s.add_dependency 'rack-oauth2'
   #s.add_dependency 'validate_url'

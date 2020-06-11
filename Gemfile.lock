@@ -5,8 +5,7 @@ PATH
       html5_validators
       openid_connect
       rack-oauth2
-      rails (~> 6.0)
-      squeel (~> 1.1)
+      rails (>= 5.0, < 7.x)
 
 GEM
   remote: http://rubygems.org/
@@ -109,8 +108,6 @@ GEM
       validate_email
       validate_url
       webfinger (>= 1.0.1)
-    polyamorous (1.1.0)
-      activerecord (>= 3.0)
     public_suffix (4.0.5)
     rack (2.2.2)
     rack-oauth2 (1.14.0)
@@ -155,10 +152,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    squeel (1.2.3)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
-      polyamorous (~> 1.1.0)
     swd (1.2.0)
       activesupport (>= 3)
       attr_required (>= 0.0.5)
