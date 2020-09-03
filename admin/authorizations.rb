@@ -20,7 +20,7 @@ if defined?(ActiveAdmin)
 
     controller do
       def collection
-        @authorizations ||= super.includes{[client, account, scopes]}
+        @authorizations ||= super.includes(:client, :account, :scopes)
       end
       def resource_params
         [params.fetch(resource_request_name, {}).permit!]
