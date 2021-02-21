@@ -1,6 +1,6 @@
 module Connect
   class UserInfoController < Connect::ApplicationController
-    before_filter :require_user_access_token
+    before_action :require_user_access_token
 
     def show
       acct = current_token.account

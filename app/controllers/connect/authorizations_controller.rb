@@ -2,7 +2,7 @@ module Connect
   class AuthorizationsController < Connect::ApplicationController
     class ReauthenticationRequired < StandardError; end
 
-    before_filter :require_authentication
+    before_action :require_authentication
 
     rescue_from Rack::OAuth2::Server::Authorize::BadRequest do |e|
       @error = e
